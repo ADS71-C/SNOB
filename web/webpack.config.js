@@ -28,6 +28,9 @@ module.exports = {
   },
   devtool: 'cheap-eval-source-map',
   plugins: [new HtmlWebpackPlugin({
+    links: [
+      'https://fonts.googleapis.com/css?family=Roboto',
+    ],
     inject: false,
     template: WebpackTemplate,
     mobile: true,
