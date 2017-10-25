@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const title = 'My Minimal React Webpack Babel Setup';
-document.write('<div id="app"/>');
+import {Router} from './router';
+
+document.write('<div id="app"/>')
 ReactDOM.render(
-  <div>{title}</div>,
+  <Router />,
   document.getElementById('app'),
-);
+)
