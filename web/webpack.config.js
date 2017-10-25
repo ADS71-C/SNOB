@@ -12,6 +12,10 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
+      {
+        test: /\.css$/,
+        loader: ['style-loader','css-loader']
+      }
     ],
   },
   resolve: {
@@ -22,6 +26,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
+  devtool: 'cheap-eval-source-map',
   plugins: [new HtmlWebpackPlugin({
     inject: false,
     template: WebpackTemplate,

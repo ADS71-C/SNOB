@@ -1,0 +1,12 @@
+.overview-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+.overview-content-inner {
+    width: 100%;
+    max-width: 1080px;
+    flex-direction:column;
+}

@@ -1,8 +1,15 @@
 import React from 'react'
+import {AppBar} from 'material-ui'
 
+import './overview.css'
 export const Overview = props => (
   <div>
-    <h1>Hello World</h1>
-    {props.children}
+    <AppBar title="S.N.O.B."/>
+
+    <div className="overview-content">
+      <div className="overview-content-inner">
+        <h1>Hello World</h1>
+      </div>
+    </div>
   </div>
 )
