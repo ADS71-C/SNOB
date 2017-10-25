@@ -26,7 +26,7 @@ module.exports = {
     publicPath: '/',
     filename: 'bundle.js',
   },
-  devtool: 'cheap-eval-source-map',
+  devtool: 'eval',
   plugins: [new HtmlWebpackPlugin({
     links: [
       'https://fonts.googleapis.com/css?family=Roboto',
@@ -34,6 +34,7 @@ module.exports = {
     inject: false,
     template: WebpackTemplate,
     mobile: true,
+    title: "S.N.O.B."
   })],
   devServer: {
     contentBase: './dist',
