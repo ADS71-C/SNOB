@@ -1,6 +1,5 @@
-# Evian
+# Hello Snob 
 
-Time to make this social network shit work again
 
 ## Requirements
 
