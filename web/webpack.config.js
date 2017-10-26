@@ -14,8 +14,8 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: ['style-loader','css-loader']
-      }
+        loader: ['style-loader', 'css-loader'],
+      },
     ],
   },
   resolve: {
@@ -34,7 +34,7 @@ module.exports = {
     inject: false,
     template: WebpackTemplate,
     mobile: true,
-    title: "S.N.O.B."
+    title: 'S.N.O.B.',
   })],
   devServer: {
     contentBase: './dist',
