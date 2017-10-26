@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 import { Menu, MenuItem, Popover } from 'material-ui';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 class Navigation extends React.Component {
   constructor(props) {
@@ -9,8 +10,7 @@ class Navigation extends React.Component {
 
     this.navigate = (url) => {
       this.props.close();
-      console.log(this.props);
-      return this.props.history.push(url);
+      this.props.push(url);
     };
   }
 
@@ -41,6 +41,13 @@ Navigation.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }),
+  push: PropTypes.func,
 };
 
-export default withRouter(Navigation);
+function mapStateToProps(state, ownProps) {
+  return ownProps;
+}
+
+export default connect(mapStateToProps, {
+  push,
+})(Navigation);
