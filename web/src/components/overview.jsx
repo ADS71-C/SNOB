@@ -2,7 +2,7 @@ import React from 'react';
 import { AppBar } from 'material-ui';
 
 import './overview.css';
-import { Navigation } from './navigation';
+import Navigation from './navigation';
 
 export class Overview extends React.Component {
   constructor(props) {
