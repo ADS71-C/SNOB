@@ -12,7 +12,7 @@ export const Router = props => (
 );
 
 Router.propTypes = {
-  history: PropTypes.shape({})
-}
+  history: PropTypes.shape({}),
+};
 
 export default Router;

@@ -5,7 +5,7 @@ import persistState from 'redux-localstorage';
 import { MuiThemeProvider } from 'material-ui';
 import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 import { routerMiddleware } from 'react-router-redux';
 // Custom components below
 import Router from './router';
@@ -14,15 +14,13 @@ import './main.css';
 
 const history = createHistory();
 
-const localstore = compose(
-  persistState(),
-);
+const persist = compose(persistState());
 
 const store = createStore(
   reducers,
   applyMiddleware(routerMiddleware(history)),
   applyMiddleware(logger),
-  localstore,
+  persist,
 );
 
 document.write('<div id="app"/>');
