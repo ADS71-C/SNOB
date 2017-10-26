@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { applyMiddleware, compose, createStore } from 'redux';
 import createHistory from 'history/createHashHistory';
 import { routerMiddleware } from 'react-router-redux';
+import thunk from 'redux-thunk';
 // Custom components below
 import Router from './router';
 import reducers from './reducers/index';
@@ -18,8 +19,9 @@ const persist = compose(persistState());
 
 const store = createStore(
   reducers,
-  applyMiddleware(routerMiddleware(history)),
   applyMiddleware(logger),
+  applyMiddleware(thunk),
+  applyMiddleware(routerMiddleware(history)),
   persist,
 );
 
