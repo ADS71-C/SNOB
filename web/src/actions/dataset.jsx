@@ -5,7 +5,7 @@ const data = [
   {
     _id: '59f9aa4320fd9b6d5918334f',
     metadata: {
-      date: '1493225202138',
+      date: 1,
       url: 815331700297396228,
       type: 'post',
       message_words: [
@@ -36,11 +36,45 @@ const data = [
           'vanavond',
         ],
       },
+  },  {
+    _id: '59f9aa4320fd9b6d5918334f',
+    metadata: {
+      date: 2,
+      url: 815331700297396228,
+      type: 'post',
+      message_words: [
+        'geweldige',
+        'conference',
+        'diepe',
+        'buiging',
+        'fan',
+        'erbij',
+        'sinds',
+        'vanavond',
+      ],
+    },
+    message: '@claudiadebreij \ngeweldige conference\ndiepe buiging\nfan erbij sinds vanavond',
+    author: 'Monsalut',
+    reports:
+      {
+        id: '59f9aa2620fd9b6d5918332c',
+        score: 0.71744827711886255,
+        scored_words: [
+          'geweldige',
+          'conference',
+          'diepe',
+          'buiging',
+          'fan',
+          'erbij',
+          'sinds',
+          'vanavond',
+        ],
+      },
   },
   {
     _id: '59f9aa4320fd9b6d59183351',
     metadata: {
-      date: '1483225200146',
+      date: 3,
       url: 815331700330926080,
       type: 'post',
       message_words: [
