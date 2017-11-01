@@ -8,6 +8,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import createHistory from 'history/createHashHistory';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // Custom components below
 import Router from './router';
 import reducers from './reducers/index';
@@ -28,7 +29,7 @@ const store = createStore(
 document.write('<div id="app"/>');
 ReactDOM.render(
   <Provider store={store}>
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={getMuiTheme()}>
       <Router history={history} />
     </MuiThemeProvider>
   </Provider>,

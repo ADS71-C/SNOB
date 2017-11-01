@@ -1,3 +1,5 @@
+import { push, goForward } from 'react-router-redux';
+
 const ANALYSES_FETCHING = 'ANALYSES_FETCHING';
 const ANALYSES_FETCHED = "'ANALYSES_FETCHED";
 const ANALYSIS_SET = 'ANALYSIS_SET';
@@ -20,13 +22,15 @@ function fetchAnalyses() {
           },
         ],
       });
-    }, 2000);
+    }, 500);
   };
 }
 
 function pickAnalysis(analysis) {
   return (dispatch) => {
     dispatch({ type: ANALYSIS_SET, analysis });
+    dispatch(push('/analyses'));
+    dispatch(goForward());
   };
 }
 
@@ -35,5 +39,5 @@ export {
   ANALYSES_FETCHING,
   ANALYSIS_SET,
   fetchAnalyses,
-  pickAnalysis
+  pickAnalysis,
 };

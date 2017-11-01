@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Router as ConnectedRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { Overview } from './components/overview';
 
 export const Router = props => (

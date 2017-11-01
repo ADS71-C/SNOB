@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import { CircularProgress } from 'material-ui';
-import { push } from 'react-router-redux'
+import { push } from 'react-router-redux';
+import { Route } from 'react-router-dom';
 // Custom Imports
 import { fetchAnalyses, pickAnalysis } from '../../actions/analyses';
 import AnalysisPicker from './picker/analysisPicker';
@@ -15,11 +16,15 @@ class AnalysisMaster extends React.Component {
   render() {
     return (
       <div>
-        {this.props.isFetching ? <CircularProgress /> : <AnalysisPicker
-          analyses={this.props.analyses}
-          pickAnalysis={this.props.pickAnalysis}
-          push={this.props.push}
-        />}
+        {this.props.isFetching ? <CircularProgress /> :
+        <div>
+          <AnalysisPicker
+            analyses={this.props.analyses}
+            pickAnalysis={this.props.pickAnalysis}
+            push={this.props.push}
+          />
+          <Route path="/analyses/" />
+        </div>}
       </div>
     );
   }
@@ -30,7 +35,7 @@ AnalysisMaster.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   fetchAnalyses: PropTypes.func.isRequired,
   pickAnalysis: PropTypes.func.isRequired,
-  push: PropTypes.func.isRequired
+  push: PropTypes.func.isRequired,
 };
 
 function mapStateToProps(state) {
@@ -43,5 +48,5 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   fetchAnalyses,
   pickAnalysis,
-  push
+  push,
 })(AnalysisMaster);

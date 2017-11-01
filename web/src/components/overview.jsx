@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar } from 'material-ui';
+import { AppBar, Paper } from 'material-ui';
 import { Route } from 'react-router-dom';
 // Custom Components
 import './overview.css';
@@ -38,7 +38,9 @@ export class Overview extends React.Component {
 
         <div className="overview-content">
           <div className="overview-content-inner">
-            <Route path="/" component={AnalysisMaster} />
+            <Paper>
+              <Route path="/" component={AnalysisMaster} />
+            </Paper>
           </div>
         </div>
       </div>
