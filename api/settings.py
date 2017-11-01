@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+import os
+
+load_dotenv(os.path.join(__file__, '.env'))
+
 schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
     # (https://github.com/pyeve/cerberus) for details.
@@ -61,14 +66,8 @@ DOMAIN = {
     'people': people
 }
 
-# Let's just use the local mongod instance. Edit as needed.
-
-# Please note that MONGO_HOST and MONGO_PORT could very well be left
-# out as they already default to a bare bones local 'mongod' instance.
-MONGO_HOST = 'localhost'
-MONGO_PORT = 27017
-
-MONGO_DBNAME = 'evian'
+# Set the MongoDB URI
+MONGO_URI = os.getenv('MONGO_URI', 'mongo://localhost:27017/smug')
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
