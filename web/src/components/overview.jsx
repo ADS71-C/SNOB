@@ -3,7 +3,7 @@ import { AppBar, Paper } from 'material-ui';
 // Custom Components
 import './overview.css';
 import Navigation from './navigation';
-import AnalysisMaster from './analyses/analysisMaster';
+import AnalysisMaster from './analyses/picker/analysisPickerWrapped';
 
 export class Overview extends React.Component {
   constructor(props) {

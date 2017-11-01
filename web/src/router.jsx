@@ -2,12 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Router, Route, IndexRoute } from 'react-router';
 import { Overview } from './components/overview';
-import AnalysisMaster from './components/analyses/analysisMaster'
+import AnalysisPickerWrapped from './components/analyses/picker/analysisPickerWrapped';
+import AnalysisDashboardWrapped from './components/analyses/dashboard/analysisDashboardWrapped';
 
 const Routes = props => (
   <Router history={props.history}>
     <Route path="/" component={Overview}>
-      <IndexRoute component={AnalysisMaster} />
+      <IndexRoute component={AnalysisPickerWrapped} />
+      <Route path="analysis" component={AnalysisPickerWrapped}>
+        <Route path=":id" component={AnalysisDashboardWrapped} />
+      </Route>
     </Route>
   </Router>
 );

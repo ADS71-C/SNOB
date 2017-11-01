@@ -14,11 +14,11 @@ function fetchAnalyses() {
         type: ANALYSES_FETCHED,
         data: [
           {
-            id: '#deadbeef',
+            id: 'deadbeef',
             name: 'hello World',
           },
           {
-            id: '#denkhetniet',
+            id: 'denkhetniet',
             name: 'Analysis 2',
           },
         ],
