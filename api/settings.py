@@ -3,67 +3,146 @@ import os
 
 load_dotenv(os.path.join(__file__, '.env'))
 
-schema = {
-    # Schema definition, based on Cerberus grammar. Check the Cerberus project
-    # (https://github.com/pyeve/cerberus) for details.
-    'firstname': {
-        'type': 'string',
-        'minlength': 1,
-        'maxlength': 10,
+message_schema = {
+    "_id": {
+      "type": "string",
+      "$id": "/properties/_id",
+      "title": "The _id Schema.",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "59f9c535517bfae152e4a994"
+      ]
     },
-    'lastname': {
-        'type': 'string',
-        'minlength': 1,
-        'maxlength': 15,
-        'required': True,
-        # talk about hard constraints! For the purpose of the demo
-        # 'lastname' is an API entry-point, so we need it to be unique.
-        'unique': True,
-    },
-    # 'role' is a list, and can only contain values from 'allowed'.
-    'role': {
-        'type': 'list',
-        'allowed': ["author", "contributor", "copy"],
-    },
-    # An embedded 'strongly-typed' dictionary.
-    'location': {
-        'type': 'dict',
-        'schema': {
-            'address': {'type': 'string'},
-            'city': {'type': 'string'}
+    "metadata": {
+      "type": "object",
+      "$id": "/properties/metadata",
+      "properties": {
+        "date": {
+          "type": "string",
+          "$id": "/properties/metadata/properties/date",
+          "title": "The Date Schema.",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "1483225200146"
+          ]
         },
+        "url": {
+          "type": "integer",
+          "$id": "/properties/metadata/properties/url",
+          "title": "The Url Schema.",
+          "description": "An explanation about the purpose of this instance.",
+          "default": 0,
+          "examples": [
+            8
+          ]
+        },
+        "type": {
+          "type": "string",
+          "$id": "/properties/metadata/properties/type",
+          "title": "The Type Schema.",
+          "description": "An explanation about the purpose of this instance.",
+          "default": "",
+          "examples": [
+            "post"
+          ]
+        },
+        "message_words": {
+          "type": "array",
+          "$id": "/properties/metadata/properties/message_words",
+          "items": {
+            "type": "string",
+            "$id": "/properties/metadata/properties/message_words/items",
+            "title": "The 0 Schema.",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "happy"
+            ]
+          }
+        }
+      }
     },
-    'born': {
-        'type': 'datetime',
+    "message": {
+      "type": "string",
+      "$id": "/properties/message",
+      "title": "The Message Schema.",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "@hetisrotjoch @hetisrotjoch @hetisrotjoch happy 2017!! 200k in 2017? hoop t voor je!"
+      ]
     },
-}
+    "author": {
+      "type": "string",
+      "$id": "/properties/author",
+      "title": "The Author Schema.",
+      "description": "An explanation about the purpose of this instance.",
+      "default": "",
+      "examples": [
+        "R4z3r #TeamRotkind"
+      ]
+    },
+    "reports": {
+      "type": "array",
+      "$id": "/properties/reports",
+      "items": {
+        "type": "object",
+        "$id": "/properties/reports/items",
+        "properties": {
+          "id": {
+            "type": "string",
+            "$id": "/properties/reports/items/properties/id",
+            "title": "The Id Schema.",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "59f9c523517bfae152e4a969"
+            ]
+          },
+          "score": {
+            "type": "number",
+            "$id": "/properties/reports/items/properties/score",
+            "title": "The Score Schema.",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0.0,
+            "examples": [
+              0.1389138549566269
+            ]
+          },
+          "scored_words": {
+            "type": "array",
+            "$id": "/properties/reports/items/properties/scored_words",
+            "items": {
+              "type": "string",
+              "$id": "/properties/reports/items/properties/scored_words/items",
+              "title": "The 0 Schema.",
+              "description": "An explanation about the purpose of this instance.",
+              "default": "",
+              "examples": [
+                "happy"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
 
-people = {
+smug_message = {
     # 'title' tag used in item links. Defaults to the resource title minus
     # the final, plural 's' (works fine in most cases but not for 'people')
-    'item_title': 'person',
-
-    # by default the standard item entry point is defined as
-    # '/people/<ObjectId>'. We leave it untouched, and we also enable an
-    # additional read-only entry point. This way consumers can also perform
-    # GET requests at '/people/<lastname>'.
-    'additional_lookup': {
-        'url': 'regex("[\w]+")',
-        'field': 'lastname'
-    },
-
-    # We choose to override global cache-control directives for this resource.
-    'cache_control': 'max-age=10,must-revalidate',
-    'cache_expires': 10,
+    'item_title': 'message',
 
     # most global settings can be overridden at resource level
-    'resource_methods': ['GET', 'POST'],
+    'resource_methods': ['GET'],
 
-    'schema': schema
+    'schema': message_schema
 }
 
 DOMAIN = {
-    'people': people
+    'smug_messages': smug_message
 }
 
 # Set the MongoDB URI
