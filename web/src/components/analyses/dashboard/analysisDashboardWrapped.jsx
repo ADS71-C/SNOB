@@ -19,11 +19,11 @@ class AnalysisDashboardWrapped extends React.Component {
       <div>
         {this.props.isFetching ? <LinearProgress mode="indeterminate" /> :
         <Tabs>
+          <Tab label="Dashboard">
+            <DataGraphs data={this.props.data} />
+          </Tab>
           <Tab label="Data">
             <DataDashboard data={this.props.data} />
-          </Tab>
-          <Tab label="Dashboard">
-            <DataGraphs />
           </Tab>
         </Tabs>
         }
