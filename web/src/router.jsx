@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router, Route, IndexRoute } from 'react-router';
 import { Overview } from './components/overview';
+import AnalysisMaster from './components/analyses/analysisMaster'
 
-export const Router = props => (
-  <ConnectedRouter history={props.history}>
-    <div>
-      <Route path="/" component={Overview} />
-    </div>
-  </ConnectedRouter>
+const Routes = props => (
+  <Router history={props.history}>
+    <Route path="/" component={Overview}>
+      <IndexRoute component={AnalysisMaster} />
+    </Route>
+  </Router>
 );
 
-Router.propTypes = {
+Routes.propTypes = {
   history: PropTypes.shape({}),
 };
 
-export default Router;
+export default Routes;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { AppBar, Paper } from 'material-ui';
-import { Route } from 'react-router-dom';
 // Custom Components
 import './overview.css';
 import Navigation from './navigation';
@@ -39,7 +38,7 @@ export class Overview extends React.Component {
         <div className="overview-content">
           <div className="overview-content-inner">
             <Paper>
-              <Route path="/" component={AnalysisMaster} />
+              {this.props.children || 'Hello world'}
             </Paper>
           </div>
         </div>

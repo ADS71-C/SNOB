@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { CircularProgress } from 'material-ui';
 import { push } from 'react-router-redux';
-import { Route } from 'react-router-dom';
 // Custom Imports
 import { fetchAnalyses, pickAnalysis } from '../../actions/analyses';
 import AnalysisPicker from './picker/analysisPicker';
@@ -23,7 +22,6 @@ class AnalysisMaster extends React.Component {
             pickAnalysis={this.props.pickAnalysis}
             push={this.props.push}
           />
-          <Route path="/analyses/" />
         </div>}
       </div>
     );

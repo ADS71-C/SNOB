@@ -1,4 +1,5 @@
-import { push, goForward } from 'react-router-redux';
+import { push, } from 'react-router-redux';
+import { hashHistory } from 'react-router'
 
 const ANALYSES_FETCHING = 'ANALYSES_FETCHING';
 const ANALYSES_FETCHED = "'ANALYSES_FETCHED";
@@ -29,8 +30,7 @@ function fetchAnalyses() {
 function pickAnalysis(analysis) {
   return (dispatch) => {
     dispatch({ type: ANALYSIS_SET, analysis });
-    dispatch(push('/analyses'));
-    dispatch(goForward());
+    hashHistory.push(`/analysis/${analysis.id}`);
   };
 }
 
