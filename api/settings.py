@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import os
 
-load_dotenv(os.path.join(__file__, '.env'))
+load_dotenv(os.path.join(os.path.dirname(__file__), '.env'))
 
 message_schema = {
     "_id": {
@@ -146,7 +146,7 @@ DOMAIN = {
 }
 
 # Set the MongoDB URI
-MONGO_URI = os.getenv('MONGO_URI', 'mongo://localhost:27017/smug')
+MONGO_URI = os.getenv('MONGO_URI', 'mongodb://localhost:27017/smug')
 
 # Enable reads (GET), inserts (POST) and DELETE for resources/collections
 # (if you omit this line, the API will default to ['GET'] and provide
