@@ -1,3 +1,6 @@
+import request from 'superagent-es6-promise';
+import jsonp from 'superagent-jsonp'
+
 const DATASET_FETCHING = 'DATASET_FETCHING';
 const DATASET_FETCHED = 'DATASET_FETCHED';
 
@@ -110,9 +113,10 @@ function fetchDataset(analysisId) {
   return (dispatch) => {
     dispatch({ type: DATASET_FETCHING, analysisId });
 
-    setTimeout(() => {
-      dispatch({ type: DATASET_FETCHED, data });
-    }, 500);
+    request.get('https://api.rickrongen.nl/snob/smug_messages')
+      .auth('ds_snobby_snob', 'queenelizabeth')
+      .then(result => console.log(result.body))
+      .catch(err => console.log(err));
   };
 }
 
