@@ -138,11 +138,34 @@ smug_message = {
     # most global settings can be overridden at resource level
     'resource_methods': ['GET'],
 
-    'schema': message_schema
+    'schema': message_schema,
 }
 
 DOMAIN = {
-    'smug_messages': smug_message
+    'smug_messages': smug_message,
+    'smug_aggregrate': {
+      'datasource': {
+        'source': 'smug_messages',
+        "aggregation": {
+          "pipeline": [
+            {'$sample': {'size': 1}},
+            {'$match': {'reports.id': "5a1580d5c58878fd9524e954",}},
+            {'$unwind': '$reports'},
+            {'$project': {
+              'date_string': {'$substr': ['$metadata.date', 0, 10]},
+              'data': '$$ROOT'
+            }},
+            {'$group': {
+              '_id': '$date_string',
+              'values': {'$push': '$data'},
+              'average': {'$avg': '$data.reports.score'},
+              'max': {'$max': '$data.reports.score'},
+              'min': {'$min': '$data.reports.score'}
+            }}
+          ]
+        }
+      }
+    }
 }
 
 # Set the MongoDB URI
